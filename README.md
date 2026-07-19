@@ -51,7 +51,7 @@ Every entry can be tagged. Graph View shows how notes connect via shared tags an
 ### Cloud Sync (GitHub)
 Optional end-to-end encrypted sync to a GitHub repo you control.
 
-1. Create a GitHub **classic** Personal Access Token with the `repo` scope: https://github.com/settings/tokens
+1. Create a GitHub token. Preferred: a [**fine-grained** token](https://github.com/settings/personal-access-tokens/new) scoped to just your sync repo with **Contents: Read and write**. A classic token with `repo` scope also works, but grants access to every repo on your account.
 2. In **Settings → Cloud Sync**, paste the token, click **Verify & Continue**.
 3. Pick an existing repo or create a new one (e.g. `my-journal`) to hold your encrypted sync data.
 4. Click **Connect**. From then on, use **Sync Now**, **Push**, or **Pull**.
@@ -75,9 +75,9 @@ Only encrypted ciphertext is ever pushed — GitHub cannot read your entries.
 
 ## Data & privacy
 
-- **Encryption:** AES-256-GCM with a key derived from your passphrase (Argon2id).
-- **Storage:** Local IndexedDB (browser build) or app-data folder (desktop build).
-- **Sync:** Zero-knowledge — the app encrypts before upload; keys never leave your device.
+- **Sync encryption:** AES-256-GCM with a key derived from your passphrase. Only ciphertext is uploaded — GitHub cannot read your entries.
+- **Storage:** Local IndexedDB (browser build) or app-data folder (desktop build). **Local data is not yet encrypted at rest** — the passphrase locks the app and protects synced data, but anyone with access to your device profile can read the database directly. Protect your device accordingly.
+- **Keys never leave your device.** There is no recovery: if you forget the passphrase, nobody can decrypt your synced data, including you.
 - **Uninstall:** removes the app; **your data folder is preserved** at `%APPDATA%\com.sapdevjournal.app\` — delete manually if you want a full wipe.
 
 ---
