@@ -51,7 +51,9 @@ Every entry can be tagged. Graph View shows how notes connect via shared tags an
 ### Cloud Sync (GitHub)
 Optional end-to-end encrypted sync to a GitHub repo you control.
 
-1. Create a GitHub token. Preferred: a [**fine-grained** token](https://github.com/settings/personal-access-tokens/new) scoped to just your sync repo with **Contents: Read and write**. A classic token with `repo` scope also works, but grants access to every repo on your account.
+1. Create a GitHub [**classic** Personal Access Token](https://github.com/settings/tokens/new?scopes=repo&description=DevJournal+Sync) with the `repo` scope.
+
+   Fine-grained tokens will not work: the in-app repo picker lists and creates repositories on your account, which a repo-scoped fine-grained token cannot do.
 2. In **Settings → Cloud Sync**, paste the token, click **Verify & Continue**.
 3. Pick an existing repo or create a new one (e.g. `my-journal`) to hold your encrypted sync data.
 4. Click **Connect**. From then on, use **Sync Now**, **Push**, or **Pull**.
@@ -84,8 +86,8 @@ Only encrypted ciphertext is ever pushed — GitHub cannot read your entries.
 
 ## Troubleshooting
 
-**"Failed to fetch" when connecting Cloud Sync**
-Your token is missing the `repo` scope, or you used a fine-grained token without repo permission. Create a classic token with `repo`.
+**"Failed to fetch" or "Bad credentials" when connecting Cloud Sync**
+You are almost certainly using a fine-grained token. Cloud Sync needs a **classic** token with the `repo` scope — the repo picker lists and creates repositories on your account, which fine-grained tokens cannot do.
 
 **Windows SmartScreen blocks the installer**
 The build is not code-signed. Click **More info → Run anyway**. If you need signed builds for enterprise use, open an issue.
