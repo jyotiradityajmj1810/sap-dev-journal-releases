@@ -22,8 +22,9 @@ Head to the [**latest release**](https://github.com/jyotiradityajmj1810/sap-dev-
 4. Launch **SAP DevJournal** from the Start Menu.
 
 ### First-run setup
-1. Set a **passphrase** — this encrypts everything on disk. There is no recovery; write it down.
-2. (Optional) Enable **Cloud Sync** in Settings to back up encrypted data to your own GitHub repo.
+1. A short **welcome flow** introduces the app and ends with a palette and light/dark picker. Use the arrow keys or the dots to move between steps; **Skip** exits at any point. It only appears once.
+2. Set a **passphrase** — this encrypts everything on disk. There is no recovery; write it down.
+3. (Optional) Enable **Cloud Sync** in Settings to back up encrypted data to your own GitHub repo.
 
 The passphrase is entered one character per box. It can be any length (8 character minimum) — the boxes grow as you type. Use the eye icon to reveal what you have typed.
 
@@ -78,7 +79,8 @@ Only encrypted ciphertext is ever pushed — GitHub cannot read your entries.
 ## Data & privacy
 
 - **Sync encryption:** AES-256-GCM with a key derived from your passphrase. Only ciphertext is uploaded — GitHub cannot read your entries.
-- **Storage:** Local IndexedDB (browser build) or app-data folder (desktop build). **Local data is not yet encrypted at rest** — the passphrase locks the app and protects synced data, but anyone with access to your device profile can read the database directly. Protect your device accordingly.
+- **Storage:** Local IndexedDB (browser build) or app-data folder (desktop build). **When a passphrase is set, local data is encrypted at rest** with AES-256-GCM — entries are stored as opaque ciphertext, so reading the database file directly reveals nothing. Existing plaintext data is migrated on the first unlock after upgrading.
+- **Without a passphrase there is no encryption.** The app cannot encrypt what it has no key for, so if you skip passphrase setup your entries are stored in the clear. Removing a passphrase later decrypts everything back to plaintext by design.
 - **Keys never leave your device.** There is no recovery: if you forget the passphrase, nobody can decrypt your synced data, including you.
 - **Uninstall:** removes the app; **your data folder is preserved** at `%APPDATA%\com.sapdevjournal.app\` — delete manually if you want a full wipe.
 
