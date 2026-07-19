@@ -25,6 +25,8 @@ Head to the [**latest release**](https://github.com/jyotiradityajmj1810/sap-dev-
 1. Set a **passphrase** — this encrypts everything on disk. There is no recovery; write it down.
 2. (Optional) Enable **Cloud Sync** in Settings to back up encrypted data to your own GitHub repo.
 
+The passphrase is entered one character per box. It can be any length (8 character minimum) — the boxes grow as you type. Use the eye icon to reveal what you have typed.
+
 ---
 
 ## Using the app
@@ -41,6 +43,8 @@ Timestamped daily entries. Great for dev logs, retros, decisions, and postmortem
 ### Dashboard
 Charts for writing streaks, tags used, and time-of-day activity.
 
+The **writing streak** heatmap counts any activity that day — creating a journal entry, editing one, creating a note, or editing a note. Click a highlighted day to expand a panel listing exactly what changed, with the time and a link to open each item.
+
 ### Tags & Graph View
 Every entry can be tagged. Graph View shows how notes connect via shared tags and backlinks.
 
@@ -53,6 +57,10 @@ Optional end-to-end encrypted sync to a GitHub repo you control.
 4. Click **Connect**. From then on, use **Sync Now**, **Push**, or **Pull**.
 
 Only encrypted ciphertext is ever pushed — GitHub cannot read your entries.
+
+**What syncs:** journal entries, notes, tags, and your preferences — theme (light/dark mode, accent colour, font, density) and display name.
+
+**What does not sync:** your passphrase. It is the encryption key, so sending it would defeat the zero-knowledge design — anyone with repo access could then decrypt everything. Type the same passphrase on each device instead; it never leaves the machine.
 
 ### Keyboard shortcuts
 | Shortcut | Action |
